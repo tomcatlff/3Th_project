@@ -51,6 +51,12 @@
             <artifactId>mchange-commons-java</artifactId>
             <version>0.2.15</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 

@@ -1,18 +1,18 @@
 package org.lanqiao.dao;
 
 import org.lanqiao.domain.Order;
-import org.lanqiao.domain.buser;
+import org.lanqiao.domain.Orderinfo;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public interface IOrderDao {
+public interface IOrderinfoDao {
     //查询所有订单
-    public List<Order> getAll() throws SQLException;
+    public List<Orderinfo> getAllbyoid(int oid) throws SQLException;
     //修改订单状态
-    public void updateOstatebyId(Order order);
+    public void updateOstate(Orderinfo orderinfo);
     //修改货物状态
-    public void updateBstatebyId(Order order);
+    public void updateBstate(Orderinfo orderinfo);
     //获取总页数
     public int getOrderTotalNum() throws SQLException;
     //获取分页数据

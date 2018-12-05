@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>订单详情</title>
 </head>
 <body>
-<h1>1651651</h1>
+<h1><a href="/order.do">订单列表</a></h1>
 </body>
 </html>

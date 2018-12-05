@@ -8,23 +8,27 @@ public class Order {
     private double totalprice;
     private String ostate;
     private String bstate;
+    private int count;
     private String phone;
     private String address;
     private String bimg;
+    private String uname;
     private String bname;
     private Double price;
 
     public Order() {
     }
 
-    public Order(Date otime, double totalprice, String ostate, String bstate, String phone, String address, String bimg, String bname, Double price) {
+    public Order(Date otime, double totalprice, String ostate, String bstate, int count, String phone, String address, String bimg, String uname, String bname, Double price) {
         this.otime = otime;
         this.totalprice = totalprice;
         this.ostate = ostate;
         this.bstate = bstate;
+        this.count = count;
         this.phone = phone;
         this.address = address;
         this.bimg = bimg;
+        this.uname = uname;
         this.bname = bname;
         this.price = price;
     }
@@ -69,6 +73,14 @@ public class Order {
         this.bstate = bstate;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -91,6 +103,14 @@ public class Order {
 
     public void setBimg(String bimg) {
         this.bimg = bimg;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
     }
 
     public String getBname() {
@@ -117,9 +137,11 @@ public class Order {
                 ", totalprice=" + totalprice +
                 ", ostate='" + ostate + '\'' +
                 ", bstate='" + bstate + '\'' +
+                ", count=" + count +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", bimg='" + bimg + '\'' +
+                ", uname='" + uname + '\'' +
                 ", bname='" + bname + '\'' +
                 ", price=" + price +
                 '}';
