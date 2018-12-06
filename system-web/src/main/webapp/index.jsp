@@ -11,6 +11,6 @@
     <title>订单详情</title>
 </head>
 <body>
-<h1><a href="/order.do">订单列表</a></h1>
+<h1><a href="/order.do?method=orderList">订单列表</a></h1>
 </body>
 </html>
