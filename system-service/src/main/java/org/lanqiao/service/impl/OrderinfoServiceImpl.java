@@ -20,4 +20,14 @@ public class OrderinfoServiceImpl implements IOrderinfoService {
         }
         return orderinfoList;
     }
+
+    @Override
+    public Orderinfo getOrderState(int oid) throws SQLException {
+        return dao.getInfobyId(oid);
+    }
+
+    @Override
+    public void modifOrderInfo(Orderinfo orderinfo) throws SQLException {
+        dao.updateState(orderinfo);
+    }
 }

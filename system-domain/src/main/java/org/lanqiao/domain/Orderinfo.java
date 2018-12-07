@@ -3,6 +3,7 @@ package org.lanqiao.domain;
 import java.util.List;
 
 public class Orderinfo {
+    private int oid;
     private String bname;
     private String bimg;
     private Double price;
@@ -17,6 +18,13 @@ public class Orderinfo {
     public Orderinfo() {
     }
 
+    public Orderinfo(String ostate, String bstate) {
+        this.ostate = ostate;
+        this.bstate = bstate;
+    }
+
+
+
     public Orderinfo(String bname, String bimg, Double price, int bookcount, String uname, String address, String phone, Double tatolprice, String ostate, String bstate) {
         this.bname = bname;
         this.bimg = bimg;
@@ -28,6 +36,28 @@ public class Orderinfo {
         this.tatolprice = tatolprice;
         this.ostate = ostate;
         this.bstate = bstate;
+    }
+
+    public Orderinfo(int oid, String bname, String bimg, Double price, int bookcount, String uname, String address, String phone, Double tatolprice, String ostate, String bstate) {
+        this.oid = oid;
+        this.bname = bname;
+        this.bimg = bimg;
+        this.price = price;
+        this.bookcount = bookcount;
+        this.uname = uname;
+        this.address = address;
+        this.phone = phone;
+        this.tatolprice = tatolprice;
+        this.ostate = ostate;
+        this.bstate = bstate;
+    }
+
+    public int getOid() {
+        return oid;
+    }
+
+    public void setOid(int oid) {
+        this.oid = oid;
     }
 
     public String getBname() {

@@ -1,6 +1,7 @@
 package org.lanqiao.dao.impl;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.lanqiao.dao.IOrderinfoDao;
 import org.lanqiao.domain.Order;
@@ -22,13 +23,19 @@ public class OrderinfoDaoImpl implements IOrderinfoDao {
         return orderinfoList;
     }
 
-    public void updateOstate(Orderinfo orderinfo) {
+    @Override
+    public Orderinfo getInfobyId(int oid) throws SQLException {
+        sql = "SELECT ostate,bstate from border where oid =?";
 
+        return qr.query(sql,new BeanHandler<>(Orderinfo.class),oid);
     }
 
-    public void updateBstate(Orderinfo orderinfo) {
-
+    @Override
+    public void updateState(Orderinfo orderinfo) throws SQLException {
+        sql = "update border set ostate=?,bstate=? where oid=?";
+        qr.update(sql,orderinfo.getOstate(),orderinfo.getBstate(),orderinfo.getOid());
     }
+
 
     public int getOrderTotalNum() throws SQLException {
         return 0;
