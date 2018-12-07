@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>1651651</h1>
+    <h1>maven做的第一个项目</h1>
+    <a href="viewmain.jsp">跳到viewmain页面</a>
 </body>
 </html>
