@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1>1651651</h1>
+<jsp:forward page="/book.do?method=findPage&currentPageNum=1"></jsp:forward>
 </body>
 </html>
