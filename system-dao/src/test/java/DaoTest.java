@@ -5,7 +5,6 @@ import org.lanqiao.dao.impl.OrderDaoImpl;
 import org.lanqiao.dao.impl.OrderinfoDaoImpl;
 import org.lanqiao.domain.Order;
 import org.lanqiao.domain.Orderinfo;
-import org.lanqiao.domain.buser;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -27,5 +26,11 @@ public class DaoTest {
         for (Orderinfo order:orderList){
             System.out.println(order);
         }
+    }
+    @Test
+    public void getOstatebyId() throws SQLException {
+        IOrderinfoDao dao = new OrderinfoDaoImpl();
+        Orderinfo orderinfo = dao.getOstatebyId(1);
+        System.out.println(orderinfo);
     }
 }

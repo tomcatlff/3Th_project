@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface IOrderinfoService {
     public List<Orderinfo> findAll(int id);
-    public Orderinfo getOrderState(int oid) throws SQLException;
+    //获取订单状态的service
+    public Orderinfo getOState(int oid) throws SQLException;
+    //获取订单状态的service
+    public Orderinfo getBState(int oid) throws SQLException;
+    //更新order
     public void modifOrderInfo(Orderinfo orderinfo) throws SQLException;
 }

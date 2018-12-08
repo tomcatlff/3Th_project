@@ -1,15 +1,15 @@
 package org.lanqiao.domain;
 
-public class buser {
+public class Buser {
     private String uname;
     private String password;
     private String phone;
     private String address;
 
-    public buser() {
+    public Buser() {
     }
 
-    public buser(String uname, String password, String phone, String address) {
+    public Buser(String uname, String password, String phone, String address) {
         this.uname = uname;
         this.password = password;
         this.phone = phone;
@@ -50,7 +50,7 @@ public class buser {
 
     @Override
     public String toString() {
-        return "buser{" +
+        return "Buser{" +
                 "uname='" + uname + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +

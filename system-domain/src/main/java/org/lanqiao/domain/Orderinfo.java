@@ -12,33 +12,15 @@ public class Orderinfo {
     private String address;
     private String phone;
     private Double tatolprice;
+    private int ostateid;
+    private int bstateid;
     private String ostate;
     private String bstate;
 
     public Orderinfo() {
     }
 
-    public Orderinfo(String ostate, String bstate) {
-        this.ostate = ostate;
-        this.bstate = bstate;
-    }
-
-
-
-    public Orderinfo(String bname, String bimg, Double price, int bookcount, String uname, String address, String phone, Double tatolprice, String ostate, String bstate) {
-        this.bname = bname;
-        this.bimg = bimg;
-        this.price = price;
-        this.bookcount = bookcount;
-        this.uname = uname;
-        this.address = address;
-        this.phone = phone;
-        this.tatolprice = tatolprice;
-        this.ostate = ostate;
-        this.bstate = bstate;
-    }
-
-    public Orderinfo(int oid, String bname, String bimg, Double price, int bookcount, String uname, String address, String phone, Double tatolprice, String ostate, String bstate) {
+    public Orderinfo(int oid, String bname, String bimg, Double price, int bookcount, String uname, String address, String phone, Double tatolprice, int ostateid, int bstateid, String ostate, String bstate) {
         this.oid = oid;
         this.bname = bname;
         this.bimg = bimg;
@@ -48,6 +30,8 @@ public class Orderinfo {
         this.address = address;
         this.phone = phone;
         this.tatolprice = tatolprice;
+        this.ostateid = ostateid;
+        this.bstateid = bstateid;
         this.ostate = ostate;
         this.bstate = bstate;
     }
@@ -140,10 +124,27 @@ public class Orderinfo {
         this.bstate = bstate;
     }
 
+    public int getOstateid() {
+        return ostateid;
+    }
+
+    public void setOstateid(int ostateid) {
+        this.ostateid = ostateid;
+    }
+
+    public int getBstateid() {
+        return bstateid;
+    }
+
+    public void setBstateid(int bstateid) {
+        this.bstateid = bstateid;
+    }
+
     @Override
     public String toString() {
         return "Orderinfo{" +
-                "bname='" + bname + '\'' +
+                "oid=" + oid +
+                ", bname='" + bname + '\'' +
                 ", bimg='" + bimg + '\'' +
                 ", price=" + price +
                 ", bookcount=" + bookcount +
@@ -151,6 +152,8 @@ public class Orderinfo {
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", tatolprice=" + tatolprice +
+                ", ostateid=" + ostateid +
+                ", bstateid=" + bstateid +
                 ", ostate='" + ostate + '\'' +
                 ", bstate='" + bstate + '\'' +
                 '}';

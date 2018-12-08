@@ -1,15 +1,15 @@
 package org.lanqiao.domain;
 
-public class books {
+public class Books {
     private int bid;
     private String bsort;
     private String bimg;
     private String bname;
 
-    public books() {
+    public Books() {
     }
 
-    public books(String bsort, String bimg, String bname) {
+    public Books(String bsort, String bimg, String bname) {
         this.bsort = bsort;
         this.bimg = bimg;
         this.bname = bname;
@@ -49,7 +49,7 @@ public class books {
 
     @Override
     public String toString() {
-        return "books{" +
+        return "Books{" +
                 "bid=" + bid +
                 ", bsort='" + bsort + '\'' +
                 ", bimg='" + bimg + '\'' +

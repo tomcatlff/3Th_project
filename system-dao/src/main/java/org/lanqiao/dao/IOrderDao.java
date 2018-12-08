@@ -1,7 +1,6 @@
 package org.lanqiao.dao;
 
 import org.lanqiao.domain.Order;
-import org.lanqiao.domain.buser;
 
 import java.sql.SQLException;
 import java.util.List;

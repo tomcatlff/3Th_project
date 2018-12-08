@@ -22,12 +22,16 @@ public class OrderinfoServiceImpl implements IOrderinfoService {
     }
 
     @Override
-    public Orderinfo getOrderState(int oid) throws SQLException {
-        return dao.getInfobyId(oid);
+    public Orderinfo getOState(int oid) throws SQLException {
+        return dao.getOstatebyId(oid);
+    }
+
+    @Override
+    public Orderinfo getBState(int oid) throws SQLException {
+        return dao.getBstatebyId(oid);
     }
 
     @Override
     public void modifOrderInfo(Orderinfo orderinfo) throws SQLException {
-        dao.updateState(orderinfo);
     }
 }

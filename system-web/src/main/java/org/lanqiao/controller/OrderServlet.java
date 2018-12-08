@@ -37,12 +37,23 @@ public class OrderServlet extends HttpServlet {
             case "orderList":
                 orderList(req, resp);
                 break;
-            case "getOrderInfo":
+            case "getOrderState":
                 try {
-                    getOrderInfo(req, resp);
+                    getOState(req, resp);
+
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                break;
+            case"getBState":
+                try {
+                    getBstate(req, resp);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case"getOrderInfo":
+                orderinfoList(req, resp);
                 break;
 
         }
@@ -52,23 +63,37 @@ public class OrderServlet extends HttpServlet {
         req.setAttribute("orderList",orderList);
         req.getRequestDispatcher("/orderslist.jsp").forward(req,resp);
     }
-    //实现修改状态回显
-    public void getOrderInfo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+    public void orderinfoList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String oidSTR = req.getParameter("orderId");
+        int oid = new Integer(oidSTR).intValue();
+        System.out.println(oid);
+        List<Orderinfo> orderinfoList = orderinfoService.findAll(oid);
+        req.setAttribute("orderinfoList",orderinfoList);
+        req.getRequestDispatcher("/orderinfoList.jsp").forward(req,resp);
+    }
+    //实现订单ostate状态回显
+    public void getOState(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/json");
         PrintWriter out = resp.getWriter();
         String oidSTR = req.getParameter("orderId");
         int oid = new Integer(oidSTR).intValue();
-        Orderinfo orderinfo = orderinfoService.getOrderState(oid);
+        Orderinfo orderinfo = orderinfoService.getOState(oid);
         String orderinfoStr = JSON.toJSONString(orderinfo);
         out.print(orderinfoStr);
 
     }
+    //实现货物bstate状态的回显
+    public void getBstate(HttpServletRequest req, HttpServletResponse resp) throws IOException, SQLException {
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/json");
+        PrintWriter out = resp.getWriter();
+        String oidSTR = req.getParameter("orderId");
+        int oid = new Integer(oidSTR).intValue();
+        Orderinfo orderinfo = orderinfoService.getBState(oid);
+        String orderinfoStr = JSON.toJSONString(orderinfo);
+        out.print(orderinfoStr);
+    }
     public void updateOrderinfo(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
-        String oidStr = req.getParameter("orderId");
-        int oid = new Integer(oidStr).intValue();
-        Orderinfo orderinfo= orderinfoService.getOrderState(oid);
-        orderinfoService.modifOrderInfo(orderinfo);
-
     }
 }

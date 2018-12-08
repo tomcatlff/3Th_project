@@ -16,26 +16,34 @@ public class OrderinfoDaoImpl implements IOrderinfoDao {
     private QueryRunner qr = new QueryRunner(JdbcUtils.getDs());
     private String sql ="";
     public List<Orderinfo> getAllbyoid(int oid) throws SQLException {
-        //String sql ="select uname,phone,address from buser";
-        sql ="SELECT  u.uname,u.phone,u.address,o.oid,o.otime,o.totalprice,o.ostate,o.bstate,b.bimg,b.bname,b.price FROM buser u,border o,bookinfo b,ubo a where u.uid=a.uid and a.bid=b.bid AND o.oid=a.oid and o.oid=?";
+        //String sql ="select uname,phone,address from Buser";
+        sql ="SELECT  u.uname,u.phone,u.address,o.oid,o.otime,o.totalprice,o.ostateid,os.ostate,o.bstateid,bs.bstate,b.bimg,b.bname,b.price FROM Buser u,border o,bookinfo b,ubo a,ostatesort os,bstatesort bs where u.uid=a.uid and a.bid=b.bid AND o.oid=a.oid AND os.ostateid=o.ostateid AND bs.bstateid=o.bstateid and o.oid=?";
         List<Orderinfo> orderinfoList;
         orderinfoList = qr.query(sql, new BeanListHandler<Orderinfo>(Orderinfo.class),oid);
         return orderinfoList;
     }
 
     @Override
-    public Orderinfo getInfobyId(int oid) throws SQLException {
-        sql = "SELECT ostate,bstate from border where oid =?";
-
+    public Orderinfo getOstatebyId(int oid) throws SQLException {
+        sql = "SELECT b.ostateid,o.ostate FROM border b,ostatesort o WHERE b.ostateid=o.ostateid and oid =?";
         return qr.query(sql,new BeanHandler<>(Orderinfo.class),oid);
     }
 
     @Override
-    public void updateState(Orderinfo orderinfo) throws SQLException {
-        sql = "update border set ostate=?,bstate=? where oid=?";
-        qr.update(sql,orderinfo.getOstate(),orderinfo.getBstate(),orderinfo.getOid());
+    public Orderinfo getBstatebyId(int oid) throws SQLException {
+        sql = "SELECT b.bstateid,o.bstate FROM border b,bstatesort o WHERE b.bstateid=o.bstateid and oid =?";
+        return qr.query(sql,new BeanHandler<>(Orderinfo.class),oid);
     }
 
+    @Override
+    public void updateOstate(Orderinfo orderinfo) throws SQLException {
+
+    }
+
+    @Override
+    public void updateBstate(Orderinfo orderinfo) throws SQLException {
+
+    }
 
     public int getOrderTotalNum() throws SQLException {
         return 0;
