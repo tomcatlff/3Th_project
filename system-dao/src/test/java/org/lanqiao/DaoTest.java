@@ -1,9 +1,9 @@
 package org.lanqiao;
 
 import org.junit.Test;
+import org.lanqiao.dao.IBstateSort;
 import org.lanqiao.dao.IOrderDao;
-import org.lanqiao.dao.IOstateSort;
-import org.lanqiao.dao.impl.IOstateSortImpl;
+import org.lanqiao.dao.impl.IBstateSortImpl;
 import org.lanqiao.dao.impl.OrderDaoImpl;
 import org.lanqiao.domain.*;
 
@@ -34,7 +34,7 @@ public class DaoTest {
     public void  getOrderById() throws SQLException {
         IOrderDao dao = new OrderDaoImpl();
         OrderBook orderBook = dao.getOrderById(2);
-        System.out.println(orderBook.getOid()+"---"+orderBook.getBname()+"---"+orderBook.getBstate());
+        System.out.println(orderBook.getOid()+"---"+orderBook.getBname()+"---"+orderBook.getBstateid());
     }
 
     @Test
@@ -46,17 +46,17 @@ public class DaoTest {
         }
     }
 
-    @Test
-    public void getOstateSort() throws SQLException {
-        IOstateSort dao = new IOstateSortImpl();
-        List<OstateSort> ostateSortList = dao.getOstateSort();
-        for(OstateSort ostate:ostateSortList){
-            System.out.println(ostate);
-        }
-    }
+//    @Test
+//    public void getOstateSort() throws SQLException {
+//        IBstateSort dao = new IBstateSortImpl();
+//        List<BstateSort> bstateSortList = dao.getOstateSort();
+//        for(BstateSort ostate: bstateSortList){
+//            System.out.println(ostate);
+//        }
+//    }
 
 //    public void findByCondition(){
-//        IOstateSort dao = new IOstateSortImpl();
+//        IBstateSort dao = new IBstateSortImpl();
 //        dao.
 //    }
 }

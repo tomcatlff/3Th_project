@@ -26,7 +26,7 @@ public interface IOrderDao {
     public  OrderBook getOrderById(int oid) throws SQLException;
 
     //修改货物的状态
-    public void  updateBstate(OrderBook orderBook) throws SQLException;
+    public void  updateBstateid(OrderBook orderBook) throws SQLException;
 
     //条件查询:根据id查询订单
     public List<UserOrder> findByCondition(int oid) throws SQLException;

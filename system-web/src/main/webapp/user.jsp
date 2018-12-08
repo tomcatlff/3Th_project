@@ -18,8 +18,13 @@
     <%--<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js"></script>--%>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js" ></script>
     <%--<script src="/pintuer/jquery.js"></script>--%>
+    <style>
+        body{
+            background-color: #9acfea;
+        }
+    </style>
 </head>
-<body>
+<body >
 <table class="table table-bordered table-hover" id="ordertable">
     <thead>
     <td>用户id</td>

@@ -1,9 +1,9 @@
 package org.lanqiao.web;
 
 import com.alibaba.fastjson.JSON;
-import org.lanqiao.domain.OstateSort;
-import org.lanqiao.service.IOstateSortService;
-import org.lanqiao.service.impl.OstateSortServiceImpl;
+import org.lanqiao.domain.BstateSort;
+import org.lanqiao.service.IBstateSortService;
+import org.lanqiao.service.impl.BstateSortServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +15,8 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/ostate.do")
-public class OstateServlet extends HttpServlet {
+@WebServlet("/bstate.do")
+public class BstateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -28,11 +28,11 @@ public class OstateServlet extends HttpServlet {
         resp.setContentType("text/json");
         PrintWriter out = resp.getWriter();
 
-        IOstateSortService service = new OstateSortServiceImpl();
+        IBstateSortService service = new BstateSortServiceImpl();
         try {
-            List<OstateSort> ostateSortList = service.findOstateSort();
-            String ostateJson = JSON.toJSONString(ostateSortList);
-            out.print(ostateJson);
+            List<BstateSort> bstateSortList = service.findBstateSort();
+            String bstateJson = JSON.toJSONString(bstateSortList);
+            out.print(bstateJson);
         } catch (SQLException e) {
             e.printStackTrace();
         }
