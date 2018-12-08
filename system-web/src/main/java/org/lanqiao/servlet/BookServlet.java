@@ -100,12 +100,12 @@ public class BookServlet extends HttpServlet {
 //        }
         req.setAttribute("pm",pm);
         req.setAttribute("currentPageNum",pm.getCurrentPageNum());
-        req.getRequestDispatcher("/list.jsp").forward(req,resp);
+        req.getRequestDispatcher("/test.jsp").forward(req,resp);
     }
     public void bookList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Book> bookList = service.findAll();
         req.setAttribute("bookList",bookList);
-        req.getRequestDispatcher("/list.jsp").forward(req,resp);
+        req.getRequestDispatcher("/test.jsp").forward(req,resp);
     }
     public void addBook(HttpServletRequest req, HttpServletResponse resp) throws ParseException, ServletException, SQLException, IOException {
         String bid = req.getParameter("bid");
@@ -178,6 +178,6 @@ public void serch(HttpServletRequest req, HttpServletResponse resp) throws SQLEx
     PageModel pm = new PageModel(1,Result.size(),5);
     pm.setRecords(Result);
     req.setAttribute("pm",pm);
-    req.getRequestDispatcher("/list.jsp").forward(req,resp);
+    req.getRequestDispatcher("/test.jsp").forward(req,resp);
 }
 }

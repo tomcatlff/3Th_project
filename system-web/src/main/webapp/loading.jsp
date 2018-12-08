@@ -14,28 +14,12 @@
     <link rel="stylesheet" href="/pintuer/pintuer.css">
     <script src="/pintuer/jquery.js"></script>
     <script src="/pintuer/pintuer.js"></script>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
     <script type="text/javascript">
-        // $(document).ready(function(){
-        //     //通过验证码输入框的blur事件，触发此函数
-        //     $("#checkcodeId").blur(function(){
-        //         var checkcode = $("#checkcodeId").val();
-        //         //在服务器端对验证码进行校验
-        //         $.post(
-        //             "CheckCodeServlet",
-        //             "checkcode="+checkcode,
-        //             //根据返回的图片路径，显示不同的提示图片
-        //             function (result) {
-        //                 var resultHtml = $("<img src ='''+result+'''height='15px'width='15px'/>");
-        //                 $("#resultTip").html(resultHtml);
-        //             }
-        //         );
-        //     });
-        // });
-        // //刷新验证码
-        // function reloadCheckImg($img) {
-        //     $img.attr("src","img.jsp?t="+(new Date().getTime()));
-        //
-        // }
+       function change() {
+           //每次告诉浏览器发送一个新的请求，不适用浏览器的缓存
+           $("#123").attr("src","/imageCode.do?"+Math.random());
+       }
 
     </script>
 
@@ -61,10 +45,11 @@
             <div class="text-center">
                 <br>
                 <h2><strong>欢迎登陆后台管理员</strong></h2></div>
+            <%--<h5 style="color:red" id="tishi"><%=session.getAttribute("error")%></h5>--%>
             <div class="" style="padding:30px;">
                 <div class="form-group">
                     <div class="field field-icon-right">
-                        <input type="text" class="input" name="username" placeholder="请输入手机号码" data-validate="required:请填写账号,length#>=5:账号长度不符合要求" />
+                        <input type="text" class="input" name="name" placeholder="请输入手机号码" data-validate="required:请填写账号,length#>=5:账号长度不符合要求" />
                         <span class="icon icon-user"></span>
                     </div>
                 </div>
@@ -76,17 +61,9 @@
                 </div>
                 <div class="form-group">
                     <div class="field">
-                        <%--<tr>--%>
-                            <%--<td><input type="text" name="checkcode" id="checkcodeId" size="4" placeholder="请输入右侧验证码"/>--%>
-                            <%--<td><a href="javascript:reloadCheckImg($('img'))">--%>
-                                <%--<img src="img.jsp"/>--%>
-                            <%--</a></td>--%>
-                            <%--<td id="resultTip"></td>--%>
-                            <%--<td>看不清？点击图片更换验证码</td>--%>
-                        <%--</tr>--%>
-                            <input type="text" name="checkcode" id="checkcodeId" size="4" placeholder="请输入右侧验证码"/>
-                        <img src="http://www.pintuer.com/demo/pintuer2/images/passcode.jpg" width="80" height="32" class="passcode" />
 
+                        <input type="text" name="rcode" placeholder="请输入右侧验证码"/> <img id="123" src="/imageCode.do">
+                        <a href="javascript:change()" ><font size="1" >看不清换一张</font></a>
                     </div>
                 </div>
                 <div class="form-group">

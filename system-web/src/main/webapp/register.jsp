@@ -14,11 +14,16 @@
     <script src="/pintuer/jquery.js"></script>
     <script src="/pintuer/pintuer.js"></script>
     <script type="text/javascript">
-        // $(function () {
-        //     $("#register").click(function () {
-        //         alert(word);
-        //     })
-        // })
+        <%--$(function () {--%>
+                <%--<%--%>
+                 <%--Object word = request.getAttribute("word");--%>
+                <%--if(word != null){--%>
+                <%--%>--%>
+                <%--alert(<%=word%>);--%>
+                <%--<%--%>
+                    <%--}--%>
+                <%--%>--%>
+        <%--})--%>
     </script>
 </head>
 <body>
@@ -56,6 +61,7 @@
                 <div class="form-group">
                     <div class="field">
                         <button class="button button-block bg-main text-big" id="register">立即注册</button>
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -68,6 +74,7 @@
             </div>
         </div>
     </form>
+
 </div>
 
 </body>
