@@ -121,7 +121,7 @@ public class OrderServlet extends HttpServlet {
 
     //获取订单详情
     public void  orderBook(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {
-        String oidStr = req.getParameter("oId");
+        String oidStr = req.getParameter("oid");
         int oid = new Integer(oidStr);
         System.out.println(oid);
         List<OrderBook> orderBookList = service.getThisOrderBook(oid);
@@ -180,12 +180,14 @@ public class OrderServlet extends HttpServlet {
     //修改货物状态
     public void update(HttpServletRequest req, HttpServletResponse resp) throws SQLException, ServletException, IOException {
         String oid = req.getParameter("oId");
-        int oids = Integer.parseInt(oid);
+        int oids = new Integer(oid);
         OrderBook orderBook = service.findOrderById(oids);
+        service.modifyOrder(orderBook);
         findPage(req,resp,null);
         //req.getRequestDispatcher("/update.jsp").forward(req,resp);
         //List<OrderBook> updateBook = service.modifyOrder(orderBook);
     }
+
 
 
     //分页

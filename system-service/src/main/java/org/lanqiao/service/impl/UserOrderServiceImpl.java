@@ -49,7 +49,7 @@ public class UserOrderServiceImpl implements IUserOrderService {
     //修改货物状态
     @Override
     public void modifyOrder(OrderBook orderBook) throws SQLException {
-        dao.updateBstate(orderBook);
+        dao.updateBstateid(orderBook);
     }
 
     //条件查询：根据id查询订单

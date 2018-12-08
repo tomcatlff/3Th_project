@@ -15,9 +15,13 @@
     <script src="/pintuer/jquery.js"></script>
     <script src="/pintuer/pintuer.js"></script>
     <script src="/js/layui.js"></script>
-
+    <style>
+        body{
+            background-color: #9acfea;
+        }
+    </style>
 </head>
-<body>
+<body >
     <table class="table table-hover" id="ordertable">
         <thead>
         <td>订单号</td>

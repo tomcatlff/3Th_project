@@ -42,6 +42,13 @@
         <%--})--%>
     <%--</script>--%>
 </head>
+<frameset rows="12%,*">
+       <frame src="top.jsp">头部</frame>
+        <frameset cols="15%,*">
+            <frame src="left.jsp">左侧</frame>
+            <frame src="right.jsp" name="right">右侧</frame>
+        </frameset>
+</frameset>
 <%--<body >--%>
     <%--<div class="navbar bg-blue navbar-big ">--%>
         <%--<div class="navbar-head">--%>
@@ -71,51 +78,57 @@
         <%--</div>--%>
     <%--</div>--%>
 <%--</body>--%>
-<body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo">后台管理系统</div>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    admin
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
-        </ul>
-    </div>
+<%--<body class="layui-layout-body">--%>
+<%--<div class="layui-layout layui-layout-admin">--%>
+    <%--<div class="layui-header">--%>
+        <%--<div class="layui-logo">后台管理系统</div>--%>
+        <%--<ul class="layui-nav layui-layout-right">--%>
+            <%--<li class="layui-nav-item">--%>
+                <%--<a href="javascript:;">--%>
+                    <%--<img src="http://t.cn/RCzsdCq" class="layui-nav-img">--%>
+                    <%--admin--%>
+                <%--</a>--%>
+                <%--<dl class="layui-nav-child">--%>
+                    <%--<dd><a href="">基本资料</a></dd>--%>
+                    <%--<dd><a href="">安全设置</a></dd>--%>
+                <%--</dl>--%>
+            <%--</li>--%>
+            <%--<li class="layui-nav-item"><a href="">退了</a></li>--%>
+        <%--</ul>--%>
+    <%--</div>--%>
 
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">所有商品</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="/order.do?method=findUserPage">用户管理</a>
-                </li>
-                <li class="layui-nav-item"><a href="/order.do?method=findPage">订单管理</a></li>
+    <%--<div class="layui-side layui-bg-black">--%>
+        <%--<div class="layui-side-scroll">--%>
+            <%--<!-- 左侧导航区域（可配合layui已有的垂直导航） -->--%>
+            <%--<ul class="layui-nav layui-nav-tree"  lay-filter="test">--%>
+                <%--<li class="layui-nav-item layui-nav-itemed">--%>
+                    <%--<a class="" href="javascript:;">所有商品</a>--%>
+                <%--</li>--%>
+                <%--<li class="layui-nav-item">--%>
+                    <%--<a href="/order.do?method=findUserPage">用户管理</a>--%>
+                <%--</li>--%>
+                <%--<li class="layui-nav-item"><a href="/order.do?method=findPage">订单管理</a></li>--%>
 
-            </ul>
-        </div>
-    </div>
+            <%--</ul>--%>
+        <%--</div>--%>
+    <%--</div>--%>
 
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
-    </div>
+    <%--<div class="layui-body">--%>
+        <%--<!-- 内容主体区域 -->--%>
+        <%--<div class="layui-tab-content">--%>
+            <%--<div class="layui-tab-item layui-show">--%>
+                <%--<iframe src='/order.jsp' frameborder="0" scrolling="yes" class="x-iframe"></iframe>--%>
+            <%--</div>--%>
+        <%--</div>--%>
 
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © 3th.com - 后台管理系统
-    </div>
-</div>
+        <%--&lt;%&ndash;<div style="padding: 15px;">内容主体区域</div>&ndash;%&gt;--%>
+    <%--</div>--%>
 
-</body>
+    <%--<div class="layui-footer">--%>
+        <%--<!-- 底部固定区域 -->--%>
+        <%--© 3th.com - 后台管理系统--%>
+    <%--</div>--%>
+<%--</div>--%>
+
+<%--</body>--%>
 </html>

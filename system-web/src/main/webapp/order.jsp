@@ -15,11 +15,12 @@
     <link rel="stylesheet" href="/pintuer/pintuer.css">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
-    <%--<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>--%>
-    <%--<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js"></script>--%>
     <script type="text/javascript" src="bootstrap/js/bootstrap.js" ></script>
-    <%--<script src="/pintuer/jquery.js"></script>--%>
-    <%--<script src="/pintuer/pintuer.js"></script>--%>
+    <style>
+        body{
+            background-color: #9acfea;
+        }
+    </style>
     <script>
         $(function () {
             $('.update').click(function () {
@@ -27,49 +28,81 @@
                 alert(oId);
                 $.ajax({
                     url:"/order.do?method=getOrder&oId="+oId,
-                    // data:{"oId":oId,"method":"getOrder"},
                     success:function (data) {
-                        //处理ajax返回的map类型的json字符串
-                        var orderInfo = eval(data);
-                        // $.each(data,function (name,value) {
-                        //     if (name == "orderBook") {//name是map的键，value是map的值
-                        //         var orderBook = eval(value);
-                       // $("#torderno").val(orderInfo.oid);
-                        $("#bname").val(orderInfo.bname);
-                        $("#tbstate").val(orderInfo.bstate);
-                        // $("#tbstate option").remove();
-                        // $.ajax({
-                        //     url: "/ostate.do",
-                        //     success: function (data) {
-                        //         var ostateList = eval(data);
-                        //         $.each(ostateList, function (index, obj) {
-                        //             var ostate = eval(obj);
-                        //             $("#tbstate").append("<option value=" + ostate.ostateid + ">" + ostate.ostate + "</option>")
-                        //         });
-                        //     }
-                        // })
-                        // } else if (name == "currentPageNum") {
-                        //     //这是给模态框的隐藏域设置当前页数
-                        //     alert(value)
-                        //     $("#updatecurrentPageNum").val(value);
-                        // }
-                    }
-                 })
-                 $('#addmodel').modal({
-                     show: true//模态框显示
-                  })
+                        var orderList = eval(data);
+                        $("#tbstates").val(orderList.bstateid);
+                        $("#tbstate option").remove();
+                        $.ajax({
+                            url: "/bstate.do",
+                            success: function (data) {
+                                var bstateList = eval(data);
+                                $.each(bstateList, function (index, obj) {
+                                    var bstate = eval(obj);
+                                    alert(bstate.bstate);
+                                    if( bstate.bstateid == orderList.bstateid){
+                                        $("#tbstate").append("<option value=" + bstate.bstateid + "selected>" + bstate.bstate + "</option>")
+                                    }else{
+                                        $("#tbstate").append("<option value=" + bstate.bstateid + ">" + bstate.bstate + "</option>")
+                                    }
 
+                                });
+                            }
+                        })
+
+                    }
+
+                 })
+
+                $('#addmodel').modal({
+                    show: true//模态框显示
+                })
             })
 
-            //通过js提交表单
-            $("#save").click(function () {
-                $("#addForm").submit();
-            });
+            // $.ajax({
+            //     url: "/bstate.do",
+            //     success: function (data) {
+            //         var bstateList = eval(data);
+            //         $.each(bstateList, function (index, obj) {
+            //             var bstate = eval(obj);
+            //             $("#tbstate").append("<option value=" + bstate.bstateid + ">" + bstate.bstate + "</option>")
+            //         });
+            //     }
+            // })
+                //     // var oId = $(this).parent().parent().children('td:eq(0)').text();
+                //     // alert(oId);
+                //     // $.ajax({
+                //     //     url:"/order.do?method=getOrder&oId="+oId,
+                //     //     // data:{"oId":oId,"method":"getOrder"},
+                //     //     success:function (data) {
+                //     //         //处理ajax返回的map类型的json字符串
+                //     //         var orderInfo = eval(data);
+                //     //         // $.each(data,function (name,value) {
+                //     //         //     if (name == "orderBook") {//name是map的键，value是map的值
+                //     //         //         var orderBook = eval(value);
+                //     //         $("#torderno").val(orderInfo.oid);
+                //     //         $("#bname").val(orderInfo.bname);
+                //     //         $("#tbstate").val(orderInfo.bstate);
+                //     //
+                //     //         // } else if (name == "currentPageNum") {
+                //     //         //     //这是给模态框的隐藏域设置当前页数
+                //     //         //     alert(value)
+                //     //         //     $("#updatecurrentPageNum").val(value);
+                //     //         // }
+                //     //     }
+                //     //  })
+                //
+                //
+                // })
+
+                //通过js提交表单
+                $("#save").click(function () {
+                    $("#addForm").submit();
+                });
 
         })
     </script>
 </head>
-<body>
+<body >
     <form action="/order.do?method=search" method="post">
         <div class="form-group">
             <label for="setOrderno" class="control-label">订单编号:</label>
@@ -114,10 +147,11 @@
                 <td><%=order.getOtime()%></td>
                 <td><%=order.getTotalprice()%></td>
                 <td id="ostates"><a><%=order.getOstate()%></a></td>
-                <td id="bstates"><a href="/order.do?method=update&oid=<%=order.getOid()%>"><%=order.getBstate()%></a></td>
-                <td id="detail"><a href="/order.do?method=orderBook&oid=<%=order.getOid()%>">订单的详情</a></td>
+                <%--/order.do?method=update&oid=<%=order.getOid()%>--%>
+                <td><a href="#" class="update"><%=order.getBstate()%></a></td>
+                <td ><a href="/order.do?method=orderBook&oid=<%=order.getOid()%>">订单的详情</a></td>
                 <%--<td id="delete"><a href="/order.do?method=delect&oid=<%=order.getOid()%>">删除</a></td>--%>
-                <td ><a  href="#" class="update">修改</a></td>
+                <%--<td ><a  href="#" class="update">修改</a></td>--%>
             </tr>
             <%
                 }
@@ -126,25 +160,28 @@
     </table>
 
 
+
     <%--<button id="button">详情</button>--%>
     <div class="modal fade" tabindex="-1" role="dialog" id="addmodel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                    <h4 class="modal-title">该订单的详情</h4>
-                </div>
-                <div class="form-group" style="">
-                    <label for="torderno" class="control-label">订单编号:</label>
-                    <input type="text" class="form-control" id="torderno" name="torderno">
-                </div>
-                <div class="form-group">
-                    <label for="bname" class="control-label">书名:</label>
-                    <input type="text" class="form-control" id="bname" name="bname">
-                </div>
-                <form id="addForm" action="/order.do?method=findPage" method="post">
+                <%--<div class="modal-header">--%>
+                    <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>--%>
+                    <%--<h4 class="modal-title">该订单的详情</h4>--%>
+                <%--</div>--%>
+                <%--<div class="form-group" style="">--%>
+                    <%--<label for="torderno" class="control-label">订单编号:</label>--%>
+                    <%--<input type="text" class="form-control" id="torderno" name="torderno">--%>
+                <%--</div>--%>
+                <%--<div class="form-group">--%>
+                    <%--<label for="bname" class="control-label">书名:</label>--%>
+                    <%--<input type="text" class="form-control" id="bname" name="bname">--%>
+                <%--</div>--%>
+                <form id="addForm" action="#" method="post">
+
                     <div class="form-group">
                         <label for="tbstate" class="control-label">货物状态:</label>
+                        <input type="text" id="tbstates">
                         <select class="form-control" id="tbstate" name="tbstate">
                         </select>
                     </div>

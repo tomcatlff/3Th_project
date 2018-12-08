@@ -8,22 +8,24 @@ public class UserOrder {
     private String otime;
     private String totalprice;
     private String ostate;
+    private int bstateid;
     private String bstate;
 
     public UserOrder() {
     }
 
-    public UserOrder(String uname, String phone, String address, String otime, String totalprice, String ostate, String bstate) {
+    public UserOrder(String uname, String phone, String address, String otime, String totalprice, String ostate, int bstateid, String bstate) {
         this.uname = uname;
         this.phone = phone;
         this.address = address;
         this.otime = otime;
         this.totalprice = totalprice;
         this.ostate = ostate;
+        this.bstateid = bstateid;
         this.bstate = bstate;
     }
 
-    public UserOrder(int oid, String uname, String phone, String address, String otime, String totalprice, String ostate, String bstate) {
+    public UserOrder(int oid, String uname, String phone, String address, String otime, String totalprice, String ostate, int bstateid, String bstate) {
         this.oid = oid;
         this.uname = uname;
         this.phone = phone;
@@ -31,6 +33,7 @@ public class UserOrder {
         this.otime = otime;
         this.totalprice = totalprice;
         this.ostate = ostate;
+        this.bstateid = bstateid;
         this.bstate = bstate;
     }
 
@@ -90,6 +93,14 @@ public class UserOrder {
         this.ostate = ostate;
     }
 
+    public int getBstateid() {
+        return bstateid;
+    }
+
+    public void setBstateid(int bstateid) {
+        this.bstateid = bstateid;
+    }
+
     public String getBstate() {
         return bstate;
     }
@@ -108,6 +119,7 @@ public class UserOrder {
                 ", otime='" + otime + '\'' +
                 ", totalprice='" + totalprice + '\'' +
                 ", ostate='" + ostate + '\'' +
+                ", bstateid=" + bstateid +
                 ", bstate='" + bstate + '\'' +
                 '}';
     }

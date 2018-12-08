@@ -29,7 +29,7 @@ public class OrderDaoImpl implements IOrderDao {
     @Override
     public List<UserOrder> getOrder() throws SQLException {
         QueryRunner qr = new QueryRunner(JdbcUtils.getDs());
-        String sql = "select bo.oid,bu.uname,bu.phone,bu.address,bo.otime ,bo.totalprice, bo.ostate,bo.bstate from buser bu , border bo ,ubo where bu.uid=ubo.uid and bo.oid=ubo.oid GROUP BY ubo.oid";
+        String sql = "select bo.oid,bu.uname,bu.phone,bu.address,bo.otime ,bo.totalprice, os.ostate,bo.bstateid,bs.bstate from buser bu , border bo ,ubo ,bstatesort bs ,ostatesort os where bu.uid=ubo.uid and bo.oid=ubo.oid and bo.bstateid=bs.bstateid and bo.ostateid=os.ostateid GROUP BY ubo.oid";
         List<UserOrder> orderList = qr.query(sql,new BeanListHandler<>(UserOrder.class));
         return orderList;
     }
@@ -38,7 +38,7 @@ public class OrderDaoImpl implements IOrderDao {
     @Override
     public List<OrderBook> getOrderBookByOid(int oid) throws SQLException {
         QueryRunner qr = new QueryRunner(JdbcUtils.getDs());
-        String sql = "select bo.oid,bi.bname ,bo.bstate from border bo,bookinfo bi,ubo where  bo.oid=ubo.oid and ubo.bid=bi.bid and bo.oid=?";
+        String sql = "select bo.oid,bi.bname ,bo.bstateid,bs.bstate from border bo,bookinfo bi,ubo,bstatesort bs where  bo.oid=ubo.oid and ubo.bid=bi.bid and bo.bstateid=bs.bstateid and bo.oid=?";
         List<OrderBook> orderBookList = qr.query(sql,new BeanListHandler<>(OrderBook.class),oid);
         return orderBookList;
     }
@@ -55,16 +55,16 @@ public class OrderDaoImpl implements IOrderDao {
     @Override
     public OrderBook getOrderById(int oid) throws SQLException {
         QueryRunner qr = new QueryRunner(JdbcUtils.getDs());
-        String sql = "select bo.oid,bi.bname ,bo.bstate from border bo,bookinfo bi,ubo where  bo.oid=ubo.oid and ubo.bid=bi.bid and bo.oid=?";
+        String sql = "select bo.oid,bi.bname ,bo.bstateid,bs.bstate from border bo,bookinfo bi,ubo ,bstatesort bs where  bo.oid=ubo.oid and ubo.bid=bi.bid and bo.bstateid=bs.bstateid and bo.oid=?";
         return qr.query(sql,new BeanHandler<>(OrderBook.class),oid);
     }
 
     //修改订单状态
     @Override
-    public void updateBstate(OrderBook orderBook) throws SQLException {
+    public void updateBstateid(OrderBook orderBook) throws SQLException {
         QueryRunner qr = new QueryRunner(JdbcUtils.getDs());
-        String sql = "update border set bstate=?  where oid=?";
-        qr.update(sql,orderBook.getBstate(),orderBook.getOid());
+        String sql = "update border set bstateid=?  where oid=?";
+        qr.update(sql,orderBook.getBstateid(),orderBook.getOid());
 
     }
 
@@ -72,7 +72,7 @@ public class OrderDaoImpl implements IOrderDao {
     @Override
     public List<UserOrder> findByCondition(int oid) throws SQLException {
         QueryRunner qr = new QueryRunner(JdbcUtils.getDs());;
-        String sql = "select bo.oid,bu.uname,bu.phone,bu.address,bo.otime ,bo.totalprice, bo.ostate,bo.bstate from buser bu , border bo ,ubo where bu.uid=ubo.uid and bo.oid=ubo.oid and bo.oid=? GROUP BY ubo.oid";
+        String sql = "select bo.oid,bu.uname,bu.phone,bu.address,bo.otime ,bo.totalprice, os.ostate,bo.bstateid,bs.bstate from buser bu , border bo ,ubo ,bstatesort bs ,ostatesort os where bu.uid=ubo.uid and bo.oid=ubo.oid and bo.bstateid=bs.bstateid and bo.ostateid=os.ostateid GROUP BY ubo.oid";
         List<UserOrder> orderList = qr.query(sql,new BeanListHandler<>(UserOrder.class),oid);
         return orderList;
     }
@@ -90,7 +90,7 @@ public class OrderDaoImpl implements IOrderDao {
     @Override
     public List<UserOrder> findPageList(int startIndex, int pageSize) throws SQLException {
         QueryRunner qr = new QueryRunner(JdbcUtils.getDs());
-        String sql = "select  bo.oid,bu.uname,bu.phone,bu.address,bo.otime ,bo.totalprice, bo.ostate,bo.bstate from buser bu , border bo ,ubo where bu.uid=ubo.uid and bo.oid=ubo.oid GROUP BY ubo.oid limit ?,?";
+        String sql = "select bo.oid,bu.uname,bu.phone,bu.address,bo.otime ,bo.totalprice, os.ostate,bo.bstateid,bs.bstate from buser bu , border bo ,ubo ,bstatesort bs ,ostatesort os where bu.uid=ubo.uid and bo.oid=ubo.oid and bo.bstateid=bs.bstateid and bo.ostateid=os.ostateid GROUP BY ubo.oid limit ?,?";
         return  qr.query(sql,new BeanListHandler<>(UserOrder.class),startIndex,pageSize);
     }
 

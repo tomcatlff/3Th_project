@@ -1,11 +1,11 @@
 package org.lanqiao.service;
 
 import org.junit.Test;
+import org.lanqiao.domain.BstateSort;
 import org.lanqiao.domain.OrderBook;
-import org.lanqiao.domain.OstateSort;
 import org.lanqiao.domain.User;
 import org.lanqiao.domain.UserOrder;
-import org.lanqiao.service.impl.OstateSortServiceImpl;
+import org.lanqiao.service.impl.BstateSortServiceImpl;
 import org.lanqiao.service.impl.UserOrderServiceImpl;
 
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ public class ServiceTest {
     public void  getOrderById() throws SQLException {
         IUserOrderService service = new UserOrderServiceImpl();
         OrderBook orderBook = service.findOrderById(3);
-        System.out.println(orderBook.getOid()+"---"+orderBook.getBname()+"---"+orderBook.getBstate());
+        System.out.println(orderBook.getOid()+"---"+orderBook.getBname()+"---"+orderBook.getBstateid());
     }
 
     @Test
@@ -39,14 +39,14 @@ public class ServiceTest {
         }
     }
 
-    @Test
-    public void getOstateSort() throws SQLException {
-        IOstateSortService service = new OstateSortServiceImpl();
-        List<OstateSort> ostateSortList = service.findOstateSort();
-        for(OstateSort ostate:ostateSortList){
-            System.out.println(ostate);
-        }
-    }
+//    @Test
+//    public void getOstateSort() throws SQLException {
+//        IBstateSortService service = new BstateSortServiceImpl();
+//        List<BstateSort> bstateSortList = service.findOstateSort();
+//        for(BstateSort ostate: bstateSortList){
+//            System.out.println(ostate);
+//        }
+//    }
 
     @Test
     public void getOrderConditon() throws SQLException {

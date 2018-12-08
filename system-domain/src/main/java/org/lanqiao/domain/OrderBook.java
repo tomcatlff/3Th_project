@@ -3,19 +3,22 @@ package org.lanqiao.domain;
 public class OrderBook {
     private int oid;
     private String bname;
+    private int bstateid;
     private String bstate;
 
     public OrderBook() {
     }
 
-    public OrderBook(String bname, String bstate) {
+    public OrderBook(String bname, int bstateid, String bstate) {
         this.bname = bname;
+        this.bstateid = bstateid;
         this.bstate = bstate;
     }
 
-    public OrderBook(int oid, String bname, String bstate) {
+    public OrderBook(int oid, String bname, int bstateid, String bstate) {
         this.oid = oid;
         this.bname = bname;
+        this.bstateid = bstateid;
         this.bstate = bstate;
     }
 
@@ -35,6 +38,14 @@ public class OrderBook {
         this.bname = bname;
     }
 
+    public int getBstateid() {
+        return bstateid;
+    }
+
+    public void setBstateid(int bstateid) {
+        this.bstateid = bstateid;
+    }
+
     public String getBstate() {
         return bstate;
     }
@@ -48,6 +59,7 @@ public class OrderBook {
         return "OrderBook{" +
                 "oid=" + oid +
                 ", bname='" + bname + '\'' +
+                ", bstateid=" + bstateid +
                 ", bstate='" + bstate + '\'' +
                 '}';
     }

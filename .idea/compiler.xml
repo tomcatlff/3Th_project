@@ -12,5 +12,12 @@
         <module name="system-web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="3Th_project" target="1.8" />
+      <module name="system-dao" target="1.8" />
+      <module name="system-domain" target="1.8" />
+      <module name="system-service" target="1.8" />
+      <module name="system-web" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
