@@ -18,6 +18,7 @@
             <artifactId>system-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <!--引入C3P0-->
         <dependency>
             <groupId>com.mchange</groupId>
