@@ -11,7 +11,9 @@
     <packaging>war</packaging>
 
     <artifactId>system-web</artifactId>
+
     <dependencies>
+
         <dependency>
             <groupId>org.lanqiao</groupId>
             <artifactId>system-service</artifactId>
@@ -34,6 +36,24 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+
+
+
     </dependencies>
     <build>
         <pluginManagement>
@@ -47,7 +67,7 @@
                             <contextPath>/</contextPath>
                         </webAppConfig>
                         <httpConnector>
-                            <port>9090</port>
+                            <port>9999</port>
                         </httpConnector>
                     </configuration>
                 </plugin>

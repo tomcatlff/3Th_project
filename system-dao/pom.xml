@@ -18,6 +18,7 @@
             <artifactId>system-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <!--引入C3P0-->
         <dependency>
             <groupId>com.mchange</groupId>
@@ -57,6 +58,40 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>1.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.sql</groupId>
+            <artifactId>jdbc-stdext</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>mchange-commons-java</artifactId>
+            <version>0.2.15</version>
+        </dependency>
+
+
 
     </dependencies>
 

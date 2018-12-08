@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>订单详情</title>
+    <title>Title</title>
 </head>
 <body>
-<h1><a href="/order.do?method=orderList">订单列表</a></h1>
+    <h1>maven做的第一个项目</h1>
+    <a href="viewmain.jsp">跳到viewmain页面</a>
 </body>
 </html>
